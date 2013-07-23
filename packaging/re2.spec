@@ -2,6 +2,7 @@
 # spec file for package python-compizconfig
 #
 # Copyright (c) 2012 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2013 Intel Corporation.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +13,13 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
-#
-
-
 Name:           re2
-%define lname	libre2-0
 Version:        20130115
 Release:        1
 License:        BSD-3-Clause
 Summary:        An efficient, principled regular expression library
 Url:            http://code.google.com/p/re2/
-Group:          Development/Libraries/C and C++
+Group:          System/Libraries
 Source:         re2-%{version}.tgz
 BuildRequires:  gcc-c++
 
@@ -33,12 +29,12 @@ regular expression engines like those used in PCRE, Perl, and
 Python. It is a C++ library.
 
 
-%package -n %lname
+%package -n libre2
 License:        BSD-3-Clause
 Summary:        An efficient, principled regular expression library
-Group:          Development/Libraries/C and C++
+Group:          System/Libraries
 
-%description -n %lname
+%description -n libre2
 RE2 is a fast, safe, thread-friendly alternative to backtracking
 regular expression engines like those used in PCRE, Perl, and
 Python. It is a C++ library.
@@ -47,8 +43,8 @@ Python. It is a C++ library.
 %package devel
 License:        BSD-3-Clause
 Summary:        An efficient, principled regular expression library
-Group:          Development/Libraries/C and C++
-Requires:       %lname = %{version}
+Group:          System/Libraries
+Requires:       libre2 = %{version}
 
 %description devel
 RE2 is a fast, safe, thread-friendly alternative to backtracking
@@ -67,14 +63,15 @@ make DESTDIR=$RPM_BUILD_ROOT libdir=%{_libdir} prefix=%{_prefix} install
 rm $RPM_BUILD_ROOT%{_libdir}/libre2.a
 
 
-%post   -n %lname -p /sbin/ldconfig
+%post   -n libre2 -p /sbin/ldconfig
 
-%postun -n %lname -p /sbin/ldconfig
+%postun -n libre2 -p /sbin/ldconfig
 
 
-%files -n %lname
+%files -n libre2
 %defattr(-, root, root, -)
-%doc AUTHORS LICENSE README
+%license LICENSE
+%doc AUTHORS README
 %{_libdir}/libre2.so.0
 %{_libdir}/libre2.so.0.0.0
 
