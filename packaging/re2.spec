@@ -62,6 +62,7 @@ Python. It is a C++ library.
 %build
 make %{?_smp_mflags} CXXFLAGS="$RPM_OPT_FLAGS -Wall -pthread" libdir=%{_libdir} prefix=%{_prefix}
 
+%install
 make DESTDIR=$RPM_BUILD_ROOT libdir=%{_libdir} prefix=%{_prefix} install
 rm $RPM_BUILD_ROOT%{_libdir}/libre2.a
 

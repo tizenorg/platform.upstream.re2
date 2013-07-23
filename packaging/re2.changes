@@ -1,3 +1,6 @@
+* Tue Jul 23 2013 Patrick Ohly <patrick.ohly@intel.com>
+- fix build when debug packages are enabled
+
 * Tue Jul 09 2013 Patrick Ohly <patrick.ohly@intel.com>
 - initial packaging of version 20130115
 - Imported Upstream version 20130115
